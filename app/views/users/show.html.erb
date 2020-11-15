@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
-<!-- <% unless @current_user.nil? %> -->
-<!-- <p>Logged in: <%= @current_user.username %></p> -->
-<!-- <% end %> -->
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
 </p>
+<table>
+  <thread>
+    <tr>
+      <th>Created Events:</th>
+    </tr>
+  </thread>
+  <tbody>
+    <% @user.created_events.each do |event| %>
+      <tr>
+        <td><%= event.event_name %></td>
+        <td><%= event.event_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to "Back", users_path %>
