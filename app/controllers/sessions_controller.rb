@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:current_user_id] = user.id
       redirect_to root_path
     else
-      redirect_to '/login'
+      redirect_to '/login', notice: 'Please enter a valid username'
     end
   end
 
