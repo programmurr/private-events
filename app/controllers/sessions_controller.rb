@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    # may need to change the params key
     user = User.find_by_username(params[:username])
 
     if user

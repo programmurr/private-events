@@ -8,8 +8,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <p id="notice"><%= notice %></p>
     <% if current_user %>
-      Signed in as <%= current_user.username %> | <%= link_to "Logout", '/logout' %>
+      Signed in as <%= current_user.username %><br />
+      <%= link_to "Logout", '/logout' %>
     <% else %>
       <%= link_to 'Login', '/login' %>
     <% end %>
