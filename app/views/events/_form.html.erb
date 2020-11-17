@@ -15,7 +15,7 @@
   </div>
   <div class="field">
     <%= form.label :event_date %><br />
-    <%= form.text_field :event_date %>
+    <%= form.date_select :event_date, {order: [:day, :month, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: Date.today.year + 5 }, {required: true} %>
   </div>
   <div class="actions">
     <%= form.submit %>

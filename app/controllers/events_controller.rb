@@ -9,9 +9,9 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.created_events.build(event_params)
+    @event[:event_date] = convert_event_date_to_string(params[:event])
 
     if @event.save
-      # @event.creator may not work - point is to redirect to the users#show of the event creator
       redirect_to @event.creator, notice: 'Event was successfully created'
     else
       render :new
@@ -20,7 +20,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    # Below line may not work. If it doesn't, manually build the show page for the creator
     redirect_to @event.creator
   end
 
@@ -28,5 +27,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:event_name, :event_date)
+  end
+
+  def convert_event_date_to_string(hash)
+    %w[3 2 1].map { |e| hash["event_date(#{e}i)"].to_i }
   end
 end
