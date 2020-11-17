@@ -11,9 +11,9 @@
     <p id="notice"><%= notice %></p>
     <% if current_user %>
       Signed in as <%= current_user.username %><br />
-      <%= link_to "Logout", '/logout' %>
+      <%= link_to "Logout", '/logout' %><br />
     <% else %>
-      <%= link_to 'Login', '/login' %>
+      <%= link_to 'Login', '/login' %><br />
     <% end %>
     <%= yield %>
   </body>

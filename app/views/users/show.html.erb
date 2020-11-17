@@ -20,14 +20,35 @@
 <table>
   <thread>
     <tr>
-      <th>Attended Events:</th>
+      <th>Previously Attended Events:</th>
     </tr>
   </thread>
   <tbody>
     <% @user.attended_events.each do |event| %>
       <tr>
-        <td><%= event.event_name %></td>
-        <td><%= event.event_date.join(',') %></td>
+        <% if event.event_date < Time.now.strftime("%d-%m-%y") %>
+          <td><%= event.event_name %></td>
+          <td><%= event.event_date %></td>
+          <td>hosted by <%= event.creator.username %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<table>
+  <thread>
+    <tr>
+      <th>Upcoming Events:</th>
+    </tr>
+  </thread>
+  <tbody>
+    <% @user.attended_events.each do |event| %>
+      <tr>
+        <% if event.event_date > Time.now.strftime("%d-%m-%y") %>
+          <td><%= event.event_name %></td>
+          <td><%= event.event_date %></td>
+          <td>hosted by <%= event.creator.username %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

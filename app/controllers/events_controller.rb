@@ -30,6 +30,6 @@ class EventsController < ApplicationController
   end
 
   def convert_event_date_to_string(hash)
-    %w[3 2 1].map { |e| hash["event_date(#{e}i)"].to_i }
+    %w[3 2 1].map { |e| hash["event_date(#{e}i)"].to_i }.join('-')
   end
 end
