@@ -11,8 +11,8 @@
   <tbody>
     <% @user.created_events.each do |event| %>
       <tr>
-        <td><%= event.event_name %></td>
-        <td><%= event.event_date %></td>
+        <td><%= event.name %></td>
+        <td><%= event.date %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,9 +26,9 @@
   <tbody>
     <% @user.attended_events.each do |event| %>
       <tr>
-        <% if event.event_date < Time.now.strftime("%d-%m-%y") %>
-          <td><%= event.event_name %></td>
-          <td><%= event.event_date %></td>
+        <% if event.date < Time.current %>
+          <td><%= event.name %></td>
+          <td><%= event.date %></td>
           <td>hosted by <%= event.creator.username %></td>
         <% end %>
       </tr>
@@ -44,13 +44,12 @@
   <tbody>
     <% @user.attended_events.each do |event| %>
       <tr>
-        <% if event.event_date > Time.now.strftime("%d-%m-%y") %>
-          <td><%= event.event_name %></td>
-          <td><%= event.event_date %></td>
+        <% if event.date > Time.current %>
+          <td><%= event.name %></td>
+          <td><%= event.date %></td>
           <td>hosted by <%= event.creator.username %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to "Home", users_path %>

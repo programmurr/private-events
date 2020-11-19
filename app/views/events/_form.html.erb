@@ -10,12 +10,12 @@
     </div>
   <% end %>
   <div class="field">
-    <%= form.label :event_name %><br />
-    <%= form.text_field :event_name %>
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
   </div>
   <div class="field">
-    <%= form.label :event_date %><br />
-    <%= form.date_select :event_date, {order: [:day, :month, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: Date.today.year + 5 }, {required: true} %>
+    <%= form.label :date %><br />
+    <%= form.date_select :date, {order: [:day, :month, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: Date.today.year + 5 }, {required: true} %>
   </div>
   <div class="actions">
     <%= form.submit %>

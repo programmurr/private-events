@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    # scopes used in view
   end
 
   def new
@@ -9,7 +9,6 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.created_events.build(event_params)
-    @event[:event_date] = convert_event_date_to_string(params[:event])
 
     if @event.save
       redirect_to @event.creator, notice: 'Event was successfully created'
@@ -26,10 +25,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:event_name, :event_date)
-  end
-
-  def convert_event_date_to_string(hash)
-    %w[3 2 1].map { |e| hash["event_date(#{e}i)"].to_i }.join('-')
+    params.require(:event).permit(:name, :date)
   end
 end
