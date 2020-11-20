@@ -11,11 +11,11 @@
   <% end %>
   <div class="field">
     <%= form.label :Invitee %><br />
-    <%= form.collection_select(:user_id, User.all.where("id != ?", current_user.id), :id, :username) %>
+    <%= form.collection_select(:attendee_id, User.all.where("id != ?", current_user.id), :id, :username) %>
   </div>
   <div class="field">
     <%= form.label :Event %><br />
-    <%= form.collection_select(:event_id, Event.all.where(creator_id: current_user.id), :id, :name) %>
+    <%= form.collection_select(:created_event_id, Event.all.where(creator_id: current_user.id), :id, :name) %>
   </div>
   <div class="actions">
     <%= form.submit %>
