@@ -1,0 +1,23 @@
+<%= form_with(model: @invite, local: true) do |form| %>
+  <% if @invite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invite.errors.count, "error") %> prohibited this invitation from being saved</h2>
+      <ul>
+        <% @invite.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :Invitee %><br />
+    <%= form.collection_select(:user_id, User.all.where("id != ?", current_user.id), :id, :username) %>
+  </div>
+  <div class="field">
+    <%= form.label :Event %><br />
+    <%= form.collection_select(:event_id, Event.all.where(creator_id: current_user.id), :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
