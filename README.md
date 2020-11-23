@@ -6,4 +6,4 @@ An assignment from [The Odin Project](https://www.theodinproject.com/lessons/ass
 
 *"A user can create events. A user can attend many events. An event can be attended by many users"*
 
-View the completed project live on Heroku (*in progress*)
+View the completed project live on [Heroku](https://programmurr-private-events.herokuapp.com/)
